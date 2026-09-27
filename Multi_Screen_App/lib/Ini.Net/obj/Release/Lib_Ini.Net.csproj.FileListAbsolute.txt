@@ -1,0 +1,17 @@
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\bin\Release\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\bin\Release\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\obj\Release\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\obj\Release\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\bin\Release\Ini.Net.dll
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\bin\Release\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\obj\Release\Ini.Net.dll
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\obj\Release\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Release\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Release\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Release\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Release\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Release\Ini.Net.dll
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Release\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Release\Ini.Net.dll
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Release\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Release\Lib_Ini.Net.csprojResolveAssemblyReference.cache

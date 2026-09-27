@@ -1,0 +1,81 @@
+C:\Users\AIS_DanielPC\Desktop\AC_Configurator_PRO\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC_Configurator_PRO\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC_Configurator_PRO\Ini.Net\obj\Debug\Lib_Ini.Net.csprojResolveAssemblyReference.cache
+C:\Users\AIS_DanielPC\Desktop\AC_Configurator_PRO\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC_Configurator_PRO\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC2020_Configurator_Excel\EXC_Agent\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC2020_Configurator_Excel\EXC_Agent\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC2020_Configurator_Excel\EXC_Agent\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC2020_Configurator_Excel\EXC_Agent\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\EXC_Agent\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\EXC_Agent\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\EXC_Agent\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\EXC_Agent\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\AC_LRM_Agent\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC LanRace Manager\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC LanRace Manager\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC_LRM_Manager\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC_LRM_Manager\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC_LRM_Manager\Ini.Net\obj\Debug\Lib_Ini.Net.csprojResolveAssemblyReference.cache
+C:\Users\AIS_DanielPC\Desktop\AC_LRM_Manager\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC_LRM_Manager\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC LRM Manager\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC LRM Manager\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC LRM Manager\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC LRM Manager\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\I7XtremeSSD\Desktop\AC_LanRace_Manager\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\danie\Desktop\AC-LanRace-Manager\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\danie\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\danie\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\danie\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\danie\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\danie\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\AIS_DanielPC\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Lib_Ini.Net.csprojResolveAssemblyReference.cache
+C:\Users\assir\Desktop\AC_LRM\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\assir\Desktop\AC_LRM\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\assir\Desktop\AC_LRM\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.CoreCompileInputs.cache
+C:\Users\assir\Desktop\AC_LRM\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\assir\Desktop\AC_LRM\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\assir\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\assir\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\assir\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.CoreCompileInputs.cache
+C:\Users\assir\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\assir\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\assir\Desktop\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.AssemblyReference.cache
+C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.CoreCompileInputs.cache
+C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.pdb
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\bin\Debug\Ini.Net.dll
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\bin\Debug\Ini.Net.pdb
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.AssemblyReference.cache
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.CoreCompileInputs.cache
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Ini.Net.dll
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Ini.Net.pdb

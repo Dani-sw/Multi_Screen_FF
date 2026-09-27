@@ -16,6 +16,8 @@ using System.Diagnostics;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Windows.Forms; // per Screen
+using Microsoft.Win32;
+using System.Collections.ObjectModel;
 using System.Timers;
 
 namespace Multi_Screen_App
@@ -29,11 +31,18 @@ namespace Multi_Screen_App
         private ProcessMonitorMover mover1;
         private ProcessMonitorMover mover2;
         private ProcessMonitorMover mover3;
-
+        
+        
         public MainWindow()
         {
+             
             InitializeComponent();
+            GlobalVar._GUI = this;
+            Preferences.Load(); //occhio va esattamente qui per caricare i combobox            
+            ApplicationsList.ItemsSource = GlobalVar.applications;
             
+           
+
         }
         public class ProcessMonitorMover
         {
@@ -56,12 +65,12 @@ namespace Multi_Screen_App
             private readonly int _targetScreenIndex; // 0 = primo monitor, 1 = secondo
             private int IsAC = 0;
             private ManagementEventWatcher watcher;
-            MainWindow GUI = new MainWindow();
+           
             private int _screenindex;
 
             public ProcessMonitorMover(string processName, int targetScreenIndex,MainWindow _gui)
             {
-                GUI = _gui;
+                
                 _processName = processName;
                 _targetScreenIndex = targetScreenIndex;
                 if (processName == "acs_pro")
@@ -136,10 +145,6 @@ namespace Multi_Screen_App
                     }
 
 
-                    GUI.Dispatcher.Invoke(() =>
-                    {
-                        GUI.Debug1_lbl.Content = proc.MainWindowHandle.ToString();
-                    });
                 }
                   
                 catch { /* processo già terminato o accesso negato: ignora */ }
@@ -175,12 +180,14 @@ namespace Multi_Screen_App
                 }
             }
 
+
   
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
+
             processname[0] = "acs_pro";
             processname[1] = "AC_LRM_Manager";
             processname[2] = "AC_LRM_Client";
@@ -193,10 +200,75 @@ namespace Multi_Screen_App
             
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void AddApplication_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
-            Environment.Exit(0);
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+
+            dialog.Title = "Select Application";
+            dialog.Filter = "Executable files (*.exe)|*.exe";
+            dialog.Multiselect = false;
+
+            if (dialog.ShowDialog() == true)
+            {
+                ApplicationItem application = new ApplicationItem();
+
+                application.Name = System.IO.Path.GetFileNameWithoutExtension(dialog.FileName);
+                application.Path = dialog.FileName;
+                application.Startup = false;
+                application.Monitor = 1;
+
+                GlobalVar.applications.Add(application);
+            }
         }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                if (WindowState == WindowState.Normal)
+                {
+                    WindowState = WindowState.Maximized;
+                }
+                else
+                {
+                    WindowState = WindowState.Normal;
+                }
+
+                return;
+            }
+
+            DragMove();
+        }
+
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+            }
+        }
+
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            Environment.Exit(0);
+
+        }
+
+       
     }
+
+  
 }
