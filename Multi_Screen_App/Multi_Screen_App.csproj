@@ -38,7 +38,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MultiScreenApp.ico</ApplicationIcon>
+    <ApplicationIcon>MSA.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Utility.cs" />
+    <Compile Include="WindowsWatcher.cs" />
+    <Page Include="Controls\MessageBox_Custom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +79,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ApplicationItem.cs" />
+    <Compile Include="Controls\MessageBox_Custom.xaml.cs" />
     <Compile Include="GlobalVar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -118,6 +125,9 @@
       <Project>{109977df-ddcb-4cb8-b658-51df6da2842c}</Project>
       <Name>Lib_Ini.Net</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MSA.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

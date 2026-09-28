@@ -19,29 +19,32 @@ using System.Windows.Forms; // per Screen
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.Timers;
+using System.Reflection;
 
 namespace Multi_Screen_App
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    //TOFIX mi frega una cartella nella path in salvataggio e aggiunge anche l'exe name in add da pulsante 
+    //TOFIX2 e così dopo alcuni salvataggi consuma le path più corte e crasha cancellando ttutto l'ini
+    //TODO startup automatico processi
+    
+
     public partial class MainWindow : Window
     {
         private string[] processname = new string[10];
-        private ProcessMonitorMover mover1;
-        private ProcessMonitorMover mover2;
-        private ProcessMonitorMover mover3;
-        
-        
+        private List<ProcessMonitorMover> mover_list=new List<ProcessMonitorMover>();
+
+        //private WindowWatcher _watcher;
         public MainWindow()
         {
-             
+            Utility.Check_dblInstance();
             InitializeComponent();
             GlobalVar._GUI = this;
             Preferences.Load(); //occhio va esattamente qui per caricare i combobox            
-            ApplicationsList.ItemsSource = GlobalVar.applications;
-            
-           
+            ApplicationsList.ItemsSource = GlobalVar.Applications_List;
 
         }
         public class ProcessMonitorMover
@@ -68,19 +71,22 @@ namespace Multi_Screen_App
            
             private int _screenindex;
 
-            public ProcessMonitorMover(string processName, int targetScreenIndex,MainWindow _gui)
+            public WindowWatcher _watcher_window { get; private set; }
+
+            public ProcessMonitorMover(string processName, int targetScreenIndex)
             {
                 
                 _processName = processName;
                 _targetScreenIndex = targetScreenIndex;
-                if (processName == "acs_pro")
-                {
-                    IsAC = 1;
-                }
-                else
+
+              /*  if (processName != "AC_LRM_Manager" || processName=="AC_LRM_Client")
                 {
                     IsAC = 0;
                 }
+                else
+                {
+                    IsAC = 1;
+                }*/
             }
 
 
@@ -96,6 +102,17 @@ namespace Multi_Screen_App
             }
 
             private void Watcher_EventArrived(object sender, EventArrivedEventArgs e)
+            {
+                
+                int pid = Convert.ToInt32(e.NewEvent.Properties["ProcessID"].Value);
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    _watcher_window = new WindowWatcher();
+                    _watcher_window.Start((uint)pid,(uint)_targetScreenIndex);
+                }));
+            }
+
+            private void Watcher_EventArrived2(object sender, EventArrivedEventArgs e)
             {
                 int pid = Convert.ToInt32(e.NewEvent.Properties["ProcessID"].Value);
                 MoveProcessWindowToScreen(pid, _targetScreenIndex);
@@ -186,19 +203,44 @@ namespace Multi_Screen_App
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
 
-            processname[0] = "acs_pro";
-            processname[1] = "AC_LRM_Manager";
-            processname[2] = "AC_LRM_Client";
-            mover1 = new ProcessMonitorMover(processname[0],1,this); // sposta "acs.exe" sul secondo monitor
-            mover2 = new ProcessMonitorMover(processname[1],0,this); // sposta "acs.exe" sul secondo monitor
-            mover3 = new ProcessMonitorMover(processname[2],1, this); // sposta "acs.exe" sul secondo monitor
-            mover1.Start();
-            mover2.Start();
-            mover3.Start();
-            
+
+
+
+             foreach (ApplicationItem application in GlobalVar.Applications_List)
+             {
+                 mover_list.Add(new ProcessMonitorMover(application.Name, application.Monitor));
+             }
+
+             foreach (ProcessMonitorMover mover in mover_list)
+             {
+                 mover.Start();
+             }
+
+   
+
+
+
+           /* ProcessStartInfo infostart = new ProcessStartInfo();
+            infostart.WorkingDirectory = @"C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\AC_LRM_Client\bin\Debug\";  //FONDAMENTALE PER FUNZIONARE
+            infostart.FileName = @"C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\AC_LRM_Client\bin\Debug\AC_LRM_Client.exe";
+
+
+            Process process=Process.Start(infostart);*/
+         
+
         }
+        public void RestartApplication()
+        {
+            string exePath = Assembly.GetEntryAssembly().Location;
+
+            Process.Start(exePath);
+            System.Windows.Application.Current.Shutdown();
+        }
+
+
+
+
 
         private void AddApplication_Click(object sender, RoutedEventArgs e)
         {
@@ -217,10 +259,19 @@ namespace Multi_Screen_App
                 application.Startup = false;
                 application.Monitor = 1;
 
-                GlobalVar.applications.Add(application);
+                GlobalVar.Applications_List.Add(application);
+            }
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is System.Windows.Controls.Button button && button.DataContext is ApplicationItem application)
+            {
+                GlobalVar.Applications_List.Remove(application);
             }
         }
 
+
+        #region Windows Layout command
         private void TitleBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
@@ -267,7 +318,12 @@ namespace Multi_Screen_App
 
         }
 
+        #endregion
+
+
        
+
+
     }
 
   

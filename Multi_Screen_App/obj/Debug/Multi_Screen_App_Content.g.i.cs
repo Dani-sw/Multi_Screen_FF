@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("multiscreenapp.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("msa.ico")]
 
 

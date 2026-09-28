@@ -1,7 +1,9 @@
 ﻿using Ini.Net;
+using Multi_Screen_App.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ namespace Multi_Screen_App
         
         private static void Save_Btn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MessageBox.Show(GlobalVar.applications[0].Name.ToString()); ;
+            Save();
         }
 
         public static ObservableCollection<MonitorItem> Monitors { get; } = new ObservableCollection<MonitorItem>();
@@ -40,16 +42,22 @@ namespace Multi_Screen_App
         public static void inifile()
         {
 
-            GlobalVar.ConfigFile = new IniFile("System\\MSA_Config.ini");
-             GlobalVar.ConfigFile_App_list = GlobalVar.ConfigFile.ReadSection_v2("APP");
-
-            foreach (KeyValuePair<string, string> item in GlobalVar.ConfigFile_App_list)
+            try
             {
-                string[] app_info = item.Value.Split('.');
-                add_Application_from_inifile(app_info);
-     
+                GlobalVar.ConfigFile = new IniFile("System\\MSA_Config.ini");
 
-               //MessageBox.Show(item.Key + " " + parts[0]);
+                GlobalVar.ConfigFile_App_list = GlobalVar.ConfigFile.ReadSection_v2("APP");
+
+                foreach (KeyValuePair<string, string> item in GlobalVar.ConfigFile_App_list)
+                {
+                    string[] app_info = item.Value.Split('.');
+                    add_Application_from_inifile(app_info);
+                }
+            }
+            catch (Exception)
+            {
+
+               
             }
 
         }
@@ -69,9 +77,26 @@ namespace Multi_Screen_App
             }
            
             application.Monitor = Convert.ToInt32(_app_info[3]);
-
-            GlobalVar.applications.Add(application);
+            GlobalVar.Applications_List.Add(application);
         }
+
+
+        public static void Save()
+        {
+            GlobalVar.ConfigFile.DeleteSection("APP");
+            int i= 1;
+            foreach (ApplicationItem _application in GlobalVar.Applications_List)
+            {
+               
+                string app_value = Path.GetDirectoryName(_application.Path)+ "." + Path.GetFileNameWithoutExtension(_application.Name) + "." + _application.Startup + "." + _application.Monitor;
+                GlobalVar.ConfigFile.WriteString_v2("APP", "APP" + i.ToString(), app_value);
+                i++;
+            }
+            MessageBox_Custom.Show("To apply the changes, the application will restart.", "Application Restart", MessageBox_Custom.MessageType.Warning);
+            GlobalVar._GUI.RestartApplication();
+
+        }
+
 
 
         public static List<MonitorItem> GetMonitors()
@@ -90,8 +115,6 @@ namespace Multi_Screen_App
 
             return monitors;
         }
-
-
 
         public class MonitorItem
         {

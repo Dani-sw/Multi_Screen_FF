@@ -75,7 +75,6 @@ C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.dl
 C:\Users\assir\Source\Repos\AC-Lan_Race_Multiplayer\Ini.Net\obj\Debug\Ini.Net.pdb
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\bin\Debug\Ini.Net.dll
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\bin\Debug\Ini.Net.pdb
-C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.AssemblyReference.cache
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Lib_Ini.Net.csproj.CoreCompileInputs.cache
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Ini.Net.dll
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\lib\Ini.Net\obj\Debug\Ini.Net.pdb
