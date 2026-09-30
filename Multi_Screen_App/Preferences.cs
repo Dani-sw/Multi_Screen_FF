@@ -28,6 +28,10 @@ namespace Multi_Screen_App
         {
             Populate_MonitorList();
             inifile();
+
+
+            GlobalVar._GUI.Title_lbl.Text = Version.sw_title();
+            GlobalVar._GUI.version_lbl.Text = Version.sw_version();
             GlobalVar._GUI.Save_Btn.Click += Save_Btn_Click;
         }
 
@@ -71,7 +75,8 @@ namespace Multi_Screen_App
             application.Path = _app_info[0];
 
             application.Startup = false;
-            if (_app_info[2]=="1")
+
+            if (_app_info[2]=="True")
             {
                 application.Startup = true;
             }
@@ -88,12 +93,12 @@ namespace Multi_Screen_App
             foreach (ApplicationItem _application in GlobalVar.Applications_List)
             {
                
-                string app_value = Path.GetDirectoryName(_application.Path)+ "." + Path.GetFileNameWithoutExtension(_application.Name) + "." + _application.Startup + "." + _application.Monitor;
+                string app_value = _application.Path+ "." + Path.GetFileNameWithoutExtension(_application.Name) + "." + _application.Startup + "." + _application.Monitor;
                 GlobalVar.ConfigFile.WriteString_v2("APP", "APP" + i.ToString(), app_value);
                 i++;
             }
             MessageBox_Custom.Show("To apply the changes, the application will restart.", "Application Restart", MessageBox_Custom.MessageType.Warning);
-            GlobalVar._GUI.RestartApplication();
+            //Process_Action.RestartApplication();
 
         }
 

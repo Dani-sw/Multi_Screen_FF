@@ -305,7 +305,7 @@
                         <Border x:Name="Row"
                                 Background="{StaticResource CardGradient}"
                                 BorderBrush="{StaticResource PanelBorderBrush}"
-                                BorderThickness="1"
+                                BorderThickness="3"
                                 CornerRadius="16"
                                 Padding="16"
                                 Effect="{StaticResource SoftShadow}">
@@ -412,11 +412,11 @@
                         </Grid>
                     </Border>
 
-                    <TextBlock Text="Multi Screen Manager"
+                    <TextBlock x:Name="Title_lbl" Text="Multi Screen Manager"
                                Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                Foreground="#DDE8F8"
-                               FontSize="12"
+                               FontSize="14"
                                FontWeight="SemiBold"/>
                 </StackPanel>
 
@@ -469,17 +469,17 @@
                     <!-- LOGO -->
                     <StackPanel>
 
-                        <Grid Width="82"
-                              Height="68"
-                              HorizontalAlignment="Left">
+                        <Grid Width="205"
+                              Height="100"
+                              HorizontalAlignment="Center" Margin="0,0,-0.2,0" >
 
-                            <Border Width="48"
-                                    Height="48"
+                            <Border Width="80"
+                                    Height="80"
                                     CornerRadius="11"
                                     BorderBrush="#11BFFF"
                                     BorderThickness="2"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top">
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" Margin="25,0,100,20">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                         <GradientStop Color="#102A48" Offset="0"/>
@@ -488,28 +488,18 @@
                                 </Border.Background>
                             </Border>
 
-                            <Border Width="48"
-                                    Height="48"
+                            <Border Width="80"
+                                    Height="80"
                                     CornerRadius="11"
                                     BorderBrush="#705BFF"
                                     BorderThickness="2"
-                                    Margin="18,14,0,0"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top"
+                                    Margin="73,20,52,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
                                     Opacity="0.9"/>
                         </Grid>
 
-                        <TextBlock Text="MULTI"
-                                   FontSize="26"
-                                   FontWeight="Bold"
-                                   Foreground="White"
-                                   Margin="2,0,0,0"/>
 
-                        <TextBlock Text="SCREEN MANAGER"
-                                   FontSize="11"
-                                   FontWeight="SemiBold"
-                                   Foreground="#16BFFF"
-                                   Margin="4,2,0,0"/>
                     </StackPanel>
 
                     <!-- MENU -->
@@ -563,14 +553,14 @@
                     <StackPanel Grid.Row="2"
                                 Orientation="Horizontal"
                                 Margin="0,0,0,4">
-                        <Ellipse Width="7"
-                                 Height="7"
+                        <Ellipse Width="20"
+                                 Height="20"
                                  Fill="#11D8C4"
                                  Margin="0,0,10,0"
                                  VerticalAlignment="Center"/>
-                        <TextBlock Text="v1.0.0"
-                                   Foreground="#637894"
-                                   FontSize="11"/>
+                        <TextBlock x:Name="version_lbl" Text="v1.0.0.0"
+                                   Foreground="White"
+                                   FontSize="14"/>
                     </StackPanel>
 
                 </Grid>
@@ -590,7 +580,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- Decorative glow -->
-                
+
 
                 <!-- HEADER -->
                 <Grid>
@@ -692,7 +682,7 @@
                                     <!-- APPLICATION -->
                                     <!-- ================================================= -->
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <Border Width="48" Height="48" CornerRadius="14" Background="#122B4A" BorderBrush="#24537D" BorderThickness="1">
+                                        <Border Width="48" Height="48" CornerRadius="14" Background="#122B4A" BorderBrush="#24537D" BorderThickness="3">
                                             <Border.Effect>
                                                 <DropShadowEffect BlurRadius="12" ShadowDepth="0" Opacity="0.2" Color="#008DFF"/>
                                             </Border.Effect>
@@ -720,7 +710,7 @@
                                     <!-- ================================================= -->
                                     <!-- DELETE / REMOVE -->
                                     <!-- ================================================= -->
-                                    <Button Grid.Column="3" Width="38" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Remove application" Click="Button_Click" >
+                                    <Button Grid.Column="3" Width="38" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Remove application" Click="Remove_Application_btn">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border x:Name="DeleteBorder" Width="38" Height="38" CornerRadius="10" Background="Transparent">
