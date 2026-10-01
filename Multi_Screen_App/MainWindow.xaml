@@ -412,7 +412,7 @@
                         </Grid>
                     </Border>
 
-                    <TextBlock x:Name="Title_lbl" Text="Multi Screen Manager"
+                    <TextBlock x:Name="Title_lbl" Text="Multi Screen APP Manager"
                                Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                Foreground="#DDE8F8"
@@ -637,17 +637,17 @@
                 <Border Grid.Row="1" Margin="0,28,0,10" Padding="18,8">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="171.2"/>
+                            <ColumnDefinition Width="163.2"/>
                             <ColumnDefinition Width="58"/>
                         </Grid.ColumnDefinitions>
                         <!-- APPLICATION -->
-                        <TextBlock Text="APPLICATION" Foreground="#58718F" FontSize="10" FontWeight="Bold"/>
+                        <TextBlock Text="APPLICATION" Foreground="#58718F" FontSize="10" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,123.8,-0.4"/>
                         <!-- STARTUP -->
-                        <TextBlock Grid.Column="1" Text="at WINDOWS STARTUP" Foreground="#58718F" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="LAUNCH WHEN THIS APP STARTS"  Foreground="#58718F" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="5.4,0,153,-0.4" Width="176" Grid.Column="1"/>
                         <!-- MONITOR -->
-                        <TextBlock Grid.Column="2" Text="MONITOR" Foreground="#58718F" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="MONITOR" Foreground="#58718F" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" Margin="58.2,0,57,-0.4" Width="48"/>
                         <!-- DELETE -->
                         <!-- Nessun titolo volutamente -->
                     </Grid>

@@ -98,7 +98,7 @@ namespace Multi_Screen_App
                 i++;
             }
             MessageBox_Custom.Show("To apply the changes, the application will restart.", "Application Restart", MessageBox_Custom.MessageType.Warning);
-            //Process_Action.RestartApplication();
+            Process_Action.RestartApplication();
 
         }
 

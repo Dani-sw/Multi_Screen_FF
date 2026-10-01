@@ -4,11 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Threading;
-
 namespace Multi_Screen_App
 {
     using System;
@@ -70,7 +65,7 @@ namespace Multi_Screen_App
         [DllImport("user32.dll")]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        public void Start(uint processId,uint app_ScreenIndex )
+        public void Start(uint processId, uint app_ScreenIndex)
         {
             _screenIndex = app_ScreenIndex;
             _delegate = WindowCreated;
@@ -97,7 +92,7 @@ namespace Multi_Screen_App
 
 
         {
-         
+
             if (hwnd == IntPtr.Zero)
                 return;
 
@@ -115,7 +110,7 @@ namespace Multi_Screen_App
                         SWP_NOZORDER | SWP_NOSIZE);
             // Poi massimizza
             ShowWindow(hwnd, SW_MAXIMIZE);
-        
+
         }
 
         public void Stop()

@@ -17,6 +17,7 @@ namespace Multi_Screen_App
              ProcessStartInfo infostart = new ProcessStartInfo();
              infostart.WorkingDirectory = path;  //FONDAMENTALE PER FUNZIONARE
              infostart.FileName =path+exename;
+            infostart.Arguments = "-autodrive";
              Process process = Process.Start(infostart);
 
         }
@@ -26,6 +27,14 @@ namespace Multi_Screen_App
             string exePath = Assembly.GetEntryAssembly().Location;
             Process.Start(exePath);
             System.Windows.Application.Current.Shutdown();
+        }
+
+
+        public static void Reset()
+        {
+            GlobalVar.ConfigFile.DeleteSection("APP");
+            RestartApplication();
+
         }
 
 

@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MoveAC.cs" />
     <Compile Include="Process_Action.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Version.cs" />
