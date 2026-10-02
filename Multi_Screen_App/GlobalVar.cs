@@ -14,5 +14,6 @@ namespace Multi_Screen_App
         static public List<KeyValuePair<string, string>> ConfigFile_App_list;
         public static MainWindow _GUI;
         public static ObservableCollection<ApplicationItem> Applications_List= new ObservableCollection<ApplicationItem>();
+        
     }
 }

@@ -736,10 +736,27 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <!-- ========================================================= -->
-                    <!-- SAVE BUTTON -->
-                    <!-- ========================================================= -->
-                    <Button x:Name="Save_Btn" Grid.Row="1" Width="145" Height="46" HorizontalAlignment="Right" VerticalAlignment="Center" Content="✓ SAVE" Style="{StaticResource PrimaryButton}"/>
+                    <Grid Grid.Row="1">
+
+                        <!-- AVVISO -->
+                        <TextBlock x:Name="Warning_lbl"
+               Text="⚠  Unsaved changes"
+               Foreground="#FF526D"
+               FontSize="16"
+               FontWeight="SemiBold"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"
+               Visibility="Collapsed"/>
+
+                        <!-- SAVE BUTTON -->
+                        <Button x:Name="Save_Btn"
+            Width="145"
+            Height="46"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Content="✓ SAVE"
+            Style="{StaticResource PrimaryButton}"/>
+                    </Grid>
                 </Grid>
 
             </Grid>

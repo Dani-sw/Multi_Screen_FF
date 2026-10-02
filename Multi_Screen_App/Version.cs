@@ -15,7 +15,7 @@ namespace Multi_Screen_App
 {
     public static class Version
     {
-        static private string _sw_version = "1.0.1.0";  //Number of version Here!
+        static private string _sw_version = "v1.0.2.0";  //Number of version Here!
         static private string _sw_title = "Multi Screen APP ";
         
 

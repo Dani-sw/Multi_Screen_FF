@@ -104,121 +104,13 @@ namespace Multi_Screen_App
 
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    /*if (nameprocess == "acs_pro.exe" || nameprocess == "acs.exe")
-                    {
-                       MoveProcessWindowToScreen2(pid, _targetScreenIndex);
-                        //bool ok = WindowMover.MoveWindowByTitle("acsW","Assetto Corsa", _targetScreenIndex,true);
-                    }*/
-                   // else
-                    //{
+                    
                         _watcher_window = new WindowWatcher();
                         _watcher_window.Start((uint)pid, (uint)_targetScreenIndex);
-                       
-                   // }
+
                 }
                 ));
             }
-
-            private void MoveProcessWindowToScreen2(int pid, int screenIndex)
-                {
-                    IntPtr hWnd = FindWindow("acsW", "Assetto Corsa");
-
-                    if (hWnd == IntPtr.Zero)
-                        return;
-
-                    var screen = Screen.AllScreens[screenIndex];
-                    var bounds = screen.WorkingArea;
-
-                    SetWindowPos(
-                        hWnd,
-                        IntPtr.Zero,
-                        bounds.Left,
-                        bounds.Top,
-                        bounds.Width,
-                        bounds.Height,
-                        SWP_NOZORDER
-                    );
-
-                    ShowWindow(hWnd, SW_MAXIMIZE);
-
-                // Controllo dopo 500 ms
-                Task.Run(async () =>
-                {
-                    await Task.Delay(500);
-
-                    for (int i = 0; i < 2; i++)
-                    {
-                        IntPtr checkHwnd = FindWindow("acsW", "Assetto Corsa");
-
-                        if (checkHwnd == IntPtr.Zero)
-                            return;
-
-                        RECT rect;
-
-                        if (!GetWindowRect(checkHwnd, out rect))
-                            return;
-
-                        int centerX = rect.Left + (rect.Right - rect.Left) / 2;
-                        int centerY = rect.Top + (rect.Bottom - rect.Top) / 2;
-
-                        if (bounds.Contains(centerX, centerY))
-                            return; // già sistemata
-
-                        SetWindowPos(
-                            checkHwnd,
-                            IntPtr.Zero,
-                            bounds.Left,
-                            bounds.Top,
-                            bounds.Width,
-                            bounds.Height,
-                            SWP_NOZORDER
-                        );
-
-                        ShowWindow(checkHwnd, SW_MAXIMIZE);
-
-                        await Task.Delay(1000);
-                    }
-                });
-            }
-            
-
-            private void MoveProcessWindowToScreen(int pid, int screenIndex)
-            {
-                var proc = Process.GetProcessById(pid);
-                try
-                {
-
-                    // Aspetta che la finestra principale sia pronta (max ~5 secondi)
-                    IntPtr hWnd = IntPtr.Zero;
-                    for (int i = 0; i < 50; i++)
-                    {
-                        proc.Refresh();
-                        //hWnd = proc.MainWindowHandle;
-                        hWnd = FindWindow("acsW", "Assetto Corsa");
-                        if (hWnd != IntPtr.Zero) break;
-                        System.Threading.Thread.Sleep(100);
-                    }
-
-                    if (hWnd == IntPtr.Zero) return; // niente finestra trovata
-
-                    if (screenIndex >= Screen.AllScreens.Length) return; // monitor inesistente
-
-                    var screen = Screen.AllScreens[screenIndex];
-                    var bounds = screen.WorkingArea;
-
-                    //GlobalVar._GUI.version_lbl.Text = bounds.Left + " " + bounds.Top;
-                    
-                    SetWindowPos(hWnd, IntPtr.Zero, bounds.Left, bounds.Top, 0, 0,SWP_NOZORDER | SWP_NOSIZE);                    // Poi massimizza
-                    ShowWindow(hWnd, SW_MAXIMIZE);
-
-
-
-
-                }
-
-                catch { /* processo già terminato o accesso negato: ignora */ }
-            }
-
 
 
         }
@@ -257,6 +149,11 @@ namespace Multi_Screen_App
                             Process_Action.App_Start(application.Path + "\\", application.Name);
                         }
                     }
+                    foreach (ApplicationItem application in GlobalVar.Applications_List)
+                    {
+
+                        application.PropertyChanged += Application_PropertyChanged;
+                    }
                 }
                 catch (Exception)
                 {
@@ -275,10 +172,11 @@ namespace Multi_Screen_App
 
 
         }
-       
 
-
-
+        private void Application_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            ApplicationItem.Changes_Warning();
+        }
 
         private void AddApplication_Click(object sender, RoutedEventArgs e)
         {

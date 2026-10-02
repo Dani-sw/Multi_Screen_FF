@@ -3,6 +3,7 @@ using Multi_Screen_App.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,14 @@ namespace Multi_Screen_App
             GlobalVar._GUI.Title_lbl.Text = Version.sw_title();
             GlobalVar._GUI.version_lbl.Text = Version.sw_version();
             GlobalVar._GUI.Save_Btn.Click += Save_Btn_Click;
+            GlobalVar.Applications_List.CollectionChanged += Applications_List_CollectionChanged;
+           
+        }
+
+        private static void Applications_List_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+          
+            GlobalVar._GUI.Warning_lbl.Visibility = System.Windows.Visibility.Visible;
         }
 
         private static void Populate_MonitorList()
@@ -71,6 +80,7 @@ namespace Multi_Screen_App
         {
             ApplicationItem application = new ApplicationItem();
 
+           
             application.Name = _app_info[1];
             application.Path = _app_info[0];
 
@@ -85,6 +95,7 @@ namespace Multi_Screen_App
             GlobalVar.Applications_List.Add(application);
         }
 
+        
 
         public static void Save()
         {
