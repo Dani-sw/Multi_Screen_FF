@@ -25,14 +25,16 @@ namespace Multi_Screen_App
         static public void RestartApplication()
         {
             string exePath = Assembly.GetEntryAssembly().Location;
-            Process.Start(exePath);
+            Process.Start(exePath);           
             System.Windows.Application.Current.Shutdown();
+            
         }
 
 
         public static void Reset()
         {
             GlobalVar.ConfigFile.DeleteSection("APP");
+            //WPF_to_TrayBar.open_GUI();
             RestartApplication();
 
         }

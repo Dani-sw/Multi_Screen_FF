@@ -69,6 +69,7 @@
     <Compile Include="Utility.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="WindowsWatcher.cs" />
+    <Compile Include="WPF_to_TrayBar.cs" />
     <Page Include="Controls\MessageBox_Custom.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

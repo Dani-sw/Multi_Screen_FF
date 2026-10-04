@@ -11,7 +11,6 @@
         Background="#07101F"
         Foreground="#F4F7FF"
         ResizeMode="CanResize"
-        Loaded="Window_Loaded"
         WindowStyle="None"
         SnapsToDevicePixels="True"
         UseLayoutRounding="True">

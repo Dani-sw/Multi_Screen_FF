@@ -54,6 +54,8 @@ namespace Multi_Screen_App
             GlobalVar._GUI.Warning_lbl.Visibility = System.Windows.Visibility.Visible;
         }
 
+
+
     }
 
 

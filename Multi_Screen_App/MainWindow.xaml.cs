@@ -65,10 +65,12 @@ namespace Multi_Screen_App
         public MainWindow()
         {
             Utility.Check_dblInstance();
-            InitializeComponent();
+            InitializeComponent();         
             GlobalVar._GUI = this;
             Preferences.Load(); //occhio va esattamente qui per caricare i combobox            
             ApplicationsList.ItemsSource = GlobalVar.Applications_List;
+            Application_initialize();
+            
 
         }
         public class ProcessMonitorMover
@@ -116,8 +118,7 @@ namespace Multi_Screen_App
         }
 
 
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Application_initialize()
         {
             if (GlobalVar.Applications_List.Count != 0)
             {
@@ -135,8 +136,8 @@ namespace Multi_Screen_App
                 }
 
                 foreach (ProcessMonitorMover mover in mover_list)
-                { 
-                   
+                {
+
                     mover.Start();
                 }
 
@@ -162,16 +163,17 @@ namespace Multi_Screen_App
                     Process_Action.Reset();
                 }
 
-
+                WPF_to_TrayBar.inizialize();
             }
             else
             {
                 MessageBox_Custom.Show("No applications found. Populate the list by adding applications, then save.", "No Application found", MessageBox_Custom.MessageType.Warning);
             }
-        
 
-
+            
         }
+
+
 
         private void Application_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
