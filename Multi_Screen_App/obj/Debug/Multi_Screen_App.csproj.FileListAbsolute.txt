@@ -33,3 +33,14 @@ C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\obj\Debug\Multi_Screen_A
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\obj\Debug\Multi_Screen_App.csproj.CopyComplete
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\obj\Debug\Multi_Screen_App.exe
 C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\obj\Debug\Multi_Screen_App.pdb
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\ControlzEx.dll
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\MahApps.Metro.dll
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\ControlzEx.pdb
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\ControlzEx.xml
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\MahApps.Metro.pdb
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\MahApps.Metro.xml
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\bin\Debug\de\MahApps.Metro.resources.dll
+C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\obj\Debug\App.baml

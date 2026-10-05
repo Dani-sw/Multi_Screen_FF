@@ -30,7 +30,7 @@ namespace Multi_Screen_App
             Populate_MonitorList();
             inifile();
 
-            GlobalVar._GUI.Title_lbl.Text = Version.sw_title();
+            GlobalVar._GUI.Title = Version.sw_title();
             GlobalVar._GUI.version_lbl.Text = Version.sw_version();
             GlobalVar._GUI.Save_Btn.Click += Save_Btn_Click;
             GlobalVar.Applications_List.CollectionChanged += Applications_List_CollectionChanged;

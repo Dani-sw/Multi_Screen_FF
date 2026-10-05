@@ -4,6 +4,7 @@ using System.Windows;
 using System.Management;
 using System.Runtime.InteropServices;
 using Multi_Screen_App.Controls;
+using MahApps.Metro.Controls;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading.Tasks;
@@ -19,9 +20,9 @@ namespace Multi_Screen_App
     //TODO startup automatico processi
     
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
-        private string[] processname = new string[10];
+      
         private List<ProcessMonitorMover> mover_list=new List<ProcessMonitorMover>();
 
         private const int SW_MAXIMIZE = 3;
