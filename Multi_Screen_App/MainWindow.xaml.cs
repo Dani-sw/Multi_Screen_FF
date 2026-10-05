@@ -125,14 +125,21 @@ namespace Multi_Screen_App
             {
                 foreach (ApplicationItem application in GlobalVar.Applications_List)
                 {
-                    if (application.Name != "acs_pro")
+
+                    application.PropertyChanged += Application_PropertyChanged;
+                }
+
+                foreach (ApplicationItem application in GlobalVar.Applications_List)
+                {
+                    if (application.Name != GlobalVar.AC_Name)
                     {
                         mover_list.Add(new ProcessMonitorMover(application.Name, application.Monitor));
                     }
                     else
                     {
                         ProcessAC_Mover AC_mover = new ProcessAC_Mover();
-                        AC_mover.Start("acs_pro", "Assetto Corsa", application.Monitor);
+                        AC_mover.Start(GlobalVar.AC_Name, "Assetto Corsa", application.Monitor);
+                        application.arguments = "-autodrive";
                     }
                 }
 
@@ -148,18 +155,16 @@ namespace Multi_Screen_App
                     {
                         if (application.Startup == true)
                         {
-                            Process_Action.App_Start(application.Path + "\\", application.Name);
+                     
+
+                            Process_Action.App_Start(application.Path + "\\", application.Name+".exe",application.arguments);
                         }
                     }
-                    foreach (ApplicationItem application in GlobalVar.Applications_List)
-                    {
-
-                        application.PropertyChanged += Application_PropertyChanged;
-                    }
+                   
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    MessageBox_Custom.Show(ex.Message, "No Application found", MessageBox_Custom.MessageType.Warning);
                     MessageBox_Custom.Show("No applications found or Path is incorrect, now the app will be reset!", "No Application found", MessageBox_Custom.MessageType.Warning);
                     Process_Action.Reset();
                 }

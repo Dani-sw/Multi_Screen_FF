@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,8 +28,17 @@ namespace Multi_Screen_App
 
         public static void Load()
         {
-            Populate_MonitorList();
-            inifile();
+            try
+            {
+
+                Populate_MonitorList();
+                inifile();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox_Custom.Show(ex.Message, "Preferences: Load()", MessageBox_Custom.MessageType.Warning);
+            }
 
             GlobalVar._GUI.Title = Version.sw_title();
             GlobalVar._GUI.version_lbl.Text = Version.sw_version();
@@ -62,14 +72,26 @@ namespace Multi_Screen_App
 
                 foreach (KeyValuePair<string, string> item in GlobalVar.ConfigFile_App_list)
                 {
-                    string[] app_info = item.Value.Split('.');
+                    string[] app_info = item.Value.Split('|');
                     add_Application_from_inifile(app_info);
                 }
-            }
-            catch (Exception)
-            {
 
-               
+                GlobalVar.Is_AC_PRO=GlobalVar.ConfigFile.ReadString_v3("SYSTEM", "AC_PRO");
+                if (GlobalVar.Is_AC_PRO=="1")
+                {
+                    GlobalVar.AC_Name = "acs_pro";
+                }
+                else
+                {
+                    GlobalVar.AC_Name = "acs";
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox_Custom.Show(ex.Message, "Preferences(inifile)", MessageBox_Custom.MessageType.Warning);
+
             }
 
         }
@@ -100,14 +122,17 @@ namespace Multi_Screen_App
         {
             GlobalVar.ConfigFile.DeleteSection("APP");
             int i= 1;
+            string app_value="";
             foreach (ApplicationItem _application in GlobalVar.Applications_List)
             {
-               
-                string app_value = _application.Path+ "." + Path.GetFileNameWithoutExtension(_application.Name) + "." + _application.Startup + "." + _application.Monitor;
+                _application.Name= Regex.Replace(_application.Name, @"\.exe$", "", RegexOptions.IgnoreCase);
+                app_value = _application.Path+ "|" + _application.Name + "|" + _application.Startup + "|" + _application.Monitor;
                 GlobalVar.ConfigFile.WriteString_v2("APP", "APP" + i.ToString(), app_value);
                 i++;
             }
+            //MessageBox_Custom.Show(app_value, "Application Restart", MessageBox_Custom.MessageType.Warning);
             MessageBox_Custom.Show("To apply the changes, the application will restart.", "Application Restart", MessageBox_Custom.MessageType.Warning);
+            //TODO se va in crash per una,fa partire lo stesso applicazioni che ha trovato
             Process_Action.RestartApplication();
 
         }

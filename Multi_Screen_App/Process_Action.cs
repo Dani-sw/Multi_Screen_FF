@@ -11,14 +11,14 @@ namespace Multi_Screen_App
     static class Process_Action
     {
 
-        public static void App_Start(string path,string exename) //path with final \
+        public static void App_Start(string path,string exename,string arguments) //path with final \
         {
 
              ProcessStartInfo infostart = new ProcessStartInfo();
              infostart.WorkingDirectory = path;  //FONDAMENTALE PER FUNZIONARE
              infostart.FileName =path+exename;
-            infostart.Arguments = "-autodrive";
-             Process process = Process.Start(infostart);
+             infostart.Arguments = arguments;
+             Process.Start(infostart);
 
         }
 

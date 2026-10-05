@@ -12,7 +12,7 @@
         IgnoreTaskbarOnMaximize="True" ShowInTaskbar="True"
         Icon="MSA.ico" 
         WindowStyle="None" TitleCharacterCasing="Normal" 
-        Background="#FF0B0F16" WindowState="Maximized"
+        Background="#FF0B0F16" WindowState="Normal"
         WindowTitleBrush="#0D121A" NonActiveWindowTitleBrush="#0D121A"
         TitleForeground="White" BorderBrush="#22FFFFFF">
 

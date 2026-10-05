@@ -9,6 +9,8 @@ namespace Multi_Screen_App
 
         public string Path { get; set; }
 
+        public string arguments { get; set; } = "";
+
         private bool _isChecked;
         private int _monitor;
 
