@@ -8,14 +8,14 @@
 [assembly: AssemblyCopyright("Copyright Mach1ne C0de")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.0.3.1")]
-[assembly: AssemblyFileVersion("1.0.3.1")]
+[assembly: AssemblyVersion("1.0.3.3")]
+[assembly: AssemblyFileVersion("1.0.3.3")]
 
 namespace Multi_Screen_App
 {
     public static class Version
     {
-        static private string _sw_version = "v1.0.3.1"; 
+        static private string _sw_version = "v1.0.3.3"; 
         static private string _sw_title = "Multi Screen APP ";
         
 

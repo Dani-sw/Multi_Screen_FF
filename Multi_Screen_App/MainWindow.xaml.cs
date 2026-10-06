@@ -137,9 +137,10 @@ namespace Multi_Screen_App
                     }
                     else
                     {
-                        ProcessAC_Mover AC_mover = new ProcessAC_Mover();
-                        AC_mover.Start(GlobalVar.AC_Name, "Assetto Corsa", application.Monitor);
                         application.arguments = "-autodrive";
+                        ProcessAC_Mover2.inizialize(application.Monitor);
+                      
+                       
                     }
                 }
 

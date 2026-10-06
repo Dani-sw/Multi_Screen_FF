@@ -90,8 +90,8 @@ namespace Multi_Screen_App
             }
             catch (Exception ex)
             {
-                MessageBox_Custom.Show(ex.Message, "Preferences(inifile)", MessageBox_Custom.MessageType.Warning);
-
+                LogWriter.Error_Trace(ex);
+               //MessageBox_Custom.Show(ex.Message, "Preferences(inifile)", MessageBox_Custom.MessageType.Warning);
             }
 
         }

@@ -20,6 +20,9 @@ namespace Multi_Screen_App
         public static string AC_Name { get; set; }
 
 
+        public static string logs_path = @"Logs\\";
+
+
 
     }
 }
