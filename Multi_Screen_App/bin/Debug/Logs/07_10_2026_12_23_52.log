@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Date :07/10/2026 12:23:52
+
+Message :Input string was not in a correct format. 
+
+------------------------------------------------------------------------------------------------
+
+inner Exception
+
+------------------------------------------------------------------------------------------------
+
+StackTrace :   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Multi_Screen_App.Preferences.add_Application_from_inifile(String[] _app_info) in C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\Preferences.cs:line 107
+   at Multi_Screen_App.Preferences.inifile() in C:\Users\assir\Desktop\Multi_Screen_FF\Multi_Screen_App\Preferences.cs:line 76
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+

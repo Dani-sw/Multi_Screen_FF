@@ -101,9 +101,9 @@ namespace Multi_Screen_App
         {
             ApplicationItem application = new ApplicationItem();
 
-           
-            application.Name = _app_info[1];
             application.Path = _app_info[0];
+            application.Name = _app_info[1];
+            
 
             application.Startup = false;
 
@@ -111,8 +111,10 @@ namespace Multi_Screen_App
             {
                 application.Startup = true;
             }
-           
-            application.Monitor = Convert.ToInt32(_app_info[3]);
+
+            application.Delay = Convert.ToInt32(_app_info[3]);
+
+            application.Monitor = Convert.ToInt32(_app_info[4]);
             GlobalVar.Applications_List.Add(application);
         }
 
@@ -126,7 +128,7 @@ namespace Multi_Screen_App
             foreach (ApplicationItem _application in GlobalVar.Applications_List)
             {
                 _application.Name= Regex.Replace(_application.Name, @"\.exe$", "", RegexOptions.IgnoreCase);
-                app_value = _application.Path+ "|" + _application.Name + "|" + _application.Startup + "|" + _application.Monitor;
+                app_value = _application.Path+ "|" + _application.Name + "|" + _application.Startup + "|"+_application.Delay +"|" + _application.Monitor;
                 GlobalVar.ConfigFile.WriteString_v2("APP", "APP" + i.ToString(), app_value);
                 i++;
             }

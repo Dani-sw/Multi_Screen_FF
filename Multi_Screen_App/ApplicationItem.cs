@@ -13,6 +13,7 @@ namespace Multi_Screen_App
 
         private bool _isChecked;
         private int _monitor;
+        private int _delayMS;
 
         public bool Startup
         {
@@ -39,6 +40,20 @@ namespace Multi_Screen_App
                 }
             }
         }
+
+        public int Delay
+        {
+            get { return _delayMS; }
+            set
+            {
+                if (_delayMS != value)
+                {
+                    _delayMS = value;
+                    OnPropertyChanged("Delay");
+                }
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

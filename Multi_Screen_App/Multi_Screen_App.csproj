@@ -78,11 +78,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="LogWriter.cs" />
-    <Compile Include="MoveAC.cs" />
+    <Compile Include="ProcessAC_Mover.cs" />
+    <Compile Include="Process_Mover.cs" />
     <Compile Include="Process_Action.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Version.cs" />
-    <Compile Include="WindowsWatcher.cs" />
     <Compile Include="WPF_to_TrayBar.cs" />
     <Page Include="Controls\MessageBox_Custom.xaml">
       <Generator>MSBuild:Compile</Generator>

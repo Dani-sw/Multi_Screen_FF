@@ -8,6 +8,9 @@ using MahApps.Metro.Controls;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+
 
 namespace Multi_Screen_App
 {
@@ -22,47 +25,8 @@ namespace Multi_Screen_App
 
     public partial class MainWindow : MetroWindow
     {
-      
-        private List<ProcessMonitorMover> mover_list=new List<ProcessMonitorMover>();
+        public Process_Mover _mover { get; private set; }
 
-        private const int SW_MAXIMIZE = 3;
-         public const int SW_MINIMIZE = 6;
-        private const uint SWP_NOZORDER = 0x0004;
-        private const uint SWP_NOSIZE = 0x0001;
-        public const int SWP_SHOWWINDOW = 0x0040;
-        [StructLayout(LayoutKind.Sequential)]
-        public struct RECT
-        {
-            public int Left;
-            public int Top;
-            public int Right;
-            public int Bottom;
-        }
-
-        [DllImport("user32.dll")]
-        private static extern bool GetWindowRect(
-            IntPtr hWnd,
-            out RECT lpRect);
-
-        [DllImport("user32.dll")]
-        private static extern bool SetWindowPos(
-    IntPtr hWnd,
-    IntPtr hWndInsertAfter,
-    int X,
-    int Y,
-    int cx,
-    int cy,
-    uint uFlags);
-
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-
-        [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
-        public static extern IntPtr FindWindow(string lpClassName,
-          string lpWindowName);
-
-        //private WindowWatcher _watcher;
         public MainWindow()
         {
             Utility.Check_dblInstance();
@@ -74,50 +38,7 @@ namespace Multi_Screen_App
             
 
         }
-        public class ProcessMonitorMover
-        {
-           
-            private readonly string _processName; // senza .exe, es. "notepad"
-            private readonly int _targetScreenIndex; // 0 = primo monitor, 1 = secondo
-            private ManagementEventWatcher watcher;
-
-            public WindowWatcher _watcher_window { get; private set; }
-
-            public ProcessMonitorMover(string processName, int targetScreenIndex)
-            {               
-                _processName = processName;
-                _targetScreenIndex = targetScreenIndex;
-            }
-
-
-            public void Start()
-            {
-                var query = new WqlEventQuery(
-                    "SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = '" + _processName + ".exe'");
-                watcher = new ManagementEventWatcher(query);
-                watcher.EventArrived += Watcher_EventArrived;
-                watcher.Start();
-            }
-
-            private void Watcher_EventArrived(object sender, EventArrivedEventArgs e)
-            {
-                
-                int pid = Convert.ToInt32(e.NewEvent.Properties["ProcessID"].Value);
-                string nameprocess = (string)e.NewEvent.Properties["ProcessName"].Value;
-
-                System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    
-                        _watcher_window = new WindowWatcher();
-                        _watcher_window.Start((uint)pid, (uint)_targetScreenIndex);
-
-                }
-                ));
-            }
-
-
-        }
-
+ 
 
         private void Application_initialize()
         {
@@ -131,24 +52,23 @@ namespace Multi_Screen_App
 
                 foreach (ApplicationItem application in GlobalVar.Applications_List)
                 {
-                    if (application.Name != GlobalVar.AC_Name)
-                    {
-                        mover_list.Add(new ProcessMonitorMover(application.Name, application.Monitor));
-                    }
-                    else
+                   
+                    if (application.Name == GlobalVar.AC_Name)
                     {
                         application.arguments = "-autodrive";
-                        ProcessAC_Mover2.inizialize(application.Monitor);
-                      
-                       
+
                     }
+                
+                    _mover = new Process_Mover(application.Name, application.Monitor, delayMs: application.Delay, pollMs: 500);
+                    _mover.Start();
+
                 }
 
-                foreach (ProcessMonitorMover mover in mover_list)
+                /*foreach (ProcessMonitorMover mover in mover_list)
                 {
 
                     mover.Start();
-                }
+                }*/
 
                 try
                 {
@@ -201,13 +121,40 @@ namespace Multi_Screen_App
 
                 application.Name = System.IO.Path.GetFileNameWithoutExtension(dialog.FileName);
                 application.Path = System.IO.Path.GetDirectoryName(dialog.FileName);
+                application.Delay = 1000;
                 application.Startup = false;
                 application.Monitor = 1;
 
                 GlobalVar.Applications_List.Add(application);
             }
         }
-        private void Remove_Application_btn(object sender, RoutedEventArgs e)
+
+
+private static readonly Regex _nonDigit = new Regex("[^0-9]");
+
+    // blocca lettere e simboli
+    private void Delay_PreviewTextInput(object sender, TextCompositionEventArgs e)
+    {
+        e.Handled = _nonDigit.IsMatch(e.Text);
+    }
+
+    // lo spazio non passa da PreviewTextInput, va bloccato qui
+    private void Delay_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        if (e.Key == Key.Space) e.Handled = true;
+    }
+
+    // blocca l'incolla di testo non numerico
+    private void Delay_Pasting(object sender, DataObjectPastingEventArgs e)
+    {
+        if (e.DataObject.GetDataPresent(typeof(string)))
+        {
+            var text = (string)e.DataObject.GetData(typeof(string));
+            if (_nonDigit.IsMatch(text)) e.CancelCommand();
+        }
+        else e.CancelCommand();
+    }
+    private void Remove_Application_btn(object sender, RoutedEventArgs e)
         {
             if (sender is System.Windows.Controls.Button button && button.DataContext is ApplicationItem application)
             {
@@ -215,58 +162,6 @@ namespace Multi_Screen_App
             }
         }
 
-
-        #region Windows Layout command
-        private void TitleBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 2)
-            {
-                if (WindowState == WindowState.Normal)
-                {
-                    WindowState = WindowState.Maximized;
-                }
-                else
-                {
-                    WindowState = WindowState.Normal;
-                }
-
-                return;
-            }
-
-            DragMove();
-        }
-
-
-        private void Minimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-
-        private void Maximize_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-            {
-                WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                WindowState = WindowState.Normal;
-            }
-        }
-
-
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            Environment.Exit(0);
-
-        }
-
-        #endregion
-
-
-       
 
 
     }

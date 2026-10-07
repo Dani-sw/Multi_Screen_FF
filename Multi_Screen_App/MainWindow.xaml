@@ -31,7 +31,7 @@
                            Margin="14,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
         </DataTemplate>
-    </mah:MetroWindow.TitleTemplate> 
+    </mah:MetroWindow.TitleTemplate>
 
     <Window.Resources>
 
@@ -121,6 +121,45 @@
 
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Box" Property="BorderBrush" Value="#12B8FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ========================================================= -->
+        <!-- TEXTBOX (numeric delay)                                    -->
+        <!-- ========================================================= -->
+
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#F4F7FF"/>
+            <Setter Property="Background" Value="#11233C"/>
+            <Setter Property="BorderBrush" Value="#294666"/>
+            <Setter Property="CaretBrush" Value="#F4F7FF"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="MaxLength" Value="6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="12">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="10,0"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#12B8FF"/>
+                                <Setter TargetName="Bd" Property="Background" Value="#142944"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#12B8FF"/>
+                                <Setter TargetName="Bd" Property="Effect" Value="{StaticResource GlowShadow}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -386,16 +425,12 @@
         </Style>
 
     </Window.Resources>
-    
-    
 
     <!-- ============================================================= -->
     <!-- WINDOW                                                         -->
     <!-- ============================================================= -->
 
     <Grid Background="{StaticResource WindowGradient}">
-
-
 
         <!-- ========================================================= -->
         <!-- APPLICATION AREA                                           -->
@@ -457,7 +492,6 @@
                                     VerticalAlignment="Center"
                                     Opacity="0.9"/>
                         </Grid>
-
 
                     </StackPanel>
 
@@ -538,9 +572,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Decorative glow -->
-
-
                 <!-- HEADER -->
                 <Grid>
 
@@ -591,55 +622,71 @@
                 </Grid>
 
                 <!-- ========================================================= -->
-                <!-- COLUMN HEADERS -->
+                <!-- COLUMN HEADERS                                             -->
+                <!-- (stesse larghezze delle colonne dell'item)                 -->
                 <!-- ========================================================= -->
-                <Border Grid.Row="1" Margin="0,28,0,10" Padding="18,8">
+                <Border Grid.Row="1" Margin="0,28,0,10" Padding="29,8,19,8">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="171.2"/>
-                            <ColumnDefinition Width="163.2"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="190"/>
                             <ColumnDefinition Width="58"/>
                         </Grid.ColumnDefinitions>
-                        <!-- APPLICATION -->
-                        <TextBlock Text="APPLICATION" Foreground="#58718F" FontSize="10" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,123.8,-0.4"/>
-                        <!-- STARTUP -->
-                        <TextBlock Text="LAUNCH WHEN THIS APP STARTS"  Foreground="#58718F" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="5.4,0,153,-0.4" Width="176" Grid.Column="1"/>
-                        <!-- MONITOR -->
-                        <TextBlock Grid.Column="2" Text="MONITOR" Foreground="#58718F" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" Margin="58.2,0,57,-0.4" Width="48"/>
-                        <!-- DELETE -->
-                        <!-- Nessun titolo volutamente -->
+
+                        <TextBlock Text="APPLICATION"
+                                   Foreground="#58718F" FontSize="10" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Column="1" Text="STARTUP"
+                                   Foreground="#58718F" FontSize="10" FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2" Text="DELAY (ms)"
+                                   Foreground="#58718F" FontSize="10" FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="3" Text="MONITOR"
+                                   Foreground="#58718F" FontSize="10" FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+                        <!-- Nessun titolo per DELETE volutamente -->
                     </Grid>
                 </Border>
 
                 <!-- ========================================================= -->
-                <!-- APPLICATION LIST -->
+                <!-- APPLICATION LIST                                           -->
                 <!-- ========================================================= -->
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="62"/>
                     </Grid.RowDefinitions>
-                    <ListBox x:Name="ApplicationsList" Grid.Row="0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemContainerStyle="{StaticResource ApplicationListBoxItem}">
+
+                    <ListBox x:Name="ApplicationsList"
+                             Grid.Row="0"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ItemContainerStyle="{StaticResource ApplicationListBoxItem}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid MinHeight="50">
-                                    <!-- ================================================= -->
-                                    <!-- COLUMNS -->
-                                    <!-- ================================================= -->
+
                                     <Grid.ColumnDefinitions>
                                         <!-- Application -->
                                         <ColumnDefinition Width="*"/>
                                         <!-- Startup -->
+                                        <ColumnDefinition Width="110"/>
+                                        <!-- Delay -->
                                         <ColumnDefinition Width="110"/>
                                         <!-- Monitor -->
                                         <ColumnDefinition Width="190"/>
                                         <!-- Delete -->
                                         <ColumnDefinition Width="58"/>
                                     </Grid.ColumnDefinitions>
-                                    <!-- ================================================= -->
+
                                     <!-- APPLICATION -->
-                                    <!-- ================================================= -->
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <Border Width="48" Height="48" CornerRadius="14" Background="#122B4A" BorderBrush="#24537D" BorderThickness="3">
                                             <Border.Effect>
@@ -652,24 +699,44 @@
                                             <TextBlock Text="{Binding Path}" Foreground="#7085A2" FontSize="10" Margin="0,4,0,0" TextTrimming="CharacterEllipsis" ToolTip="{Binding Path}"/>
                                         </StackPanel>
                                     </StackPanel>
-                                    <!-- ================================================= -->
+
                                     <!-- STARTUP -->
-                                    <!-- ================================================= -->
-                                    <CheckBox Grid.Column="1" Style="{StaticResource ModernCheckBox}" IsChecked="{Binding Startup}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    <!-- ================================================= -->
+                                    <CheckBox Grid.Column="1"
+                                              Style="{StaticResource ModernCheckBox}"
+                                              IsChecked="{Binding Startup}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+
+                                    <!-- DELAY (solo numeri) -->
+                                    <TextBox Grid.Column="2"
+                                             Width="80"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             HorizontalContentAlignment="Center"
+                                             Style="{StaticResource ModernTextBox}"
+                                             ToolTip="Ritardo in millisecondi prima di spostare la finestra"
+                                             InputMethod.IsInputMethodEnabled="False"
+                                             Text="{Binding Delay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=0, FallbackValue=0}"
+                                             PreviewTextInput="Delay_PreviewTextInput"
+                                             PreviewKeyDown="Delay_PreviewKeyDown"
+                                             DataObject.Pasting="Delay_Pasting"/>
+
                                     <!-- MONITOR -->
-                                    <!-- ================================================= -->
-                                    <ComboBox Grid.Column="2" Width="180" Style="{StaticResource ModernComboBox}" ItemsSource="{Binding Source={x:Static local:Preferences.Monitors}}" SelectedValuePath="Index" SelectedValue="{Binding Monitor, Mode=TwoWay}">
+                                    <ComboBox Grid.Column="3"
+                                              Width="180"
+                                              Style="{StaticResource ModernComboBox}"
+                                              ItemsSource="{Binding Source={x:Static local:Preferences.Monitors}}"
+                                              SelectedValuePath="Index"
+                                              SelectedValue="{Binding Monitor, Mode=TwoWay}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Name}" Foreground="#F4F7FF" FontSize="13"/>
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
-                                    <!-- ================================================= -->
+
                                     <!-- DELETE / REMOVE -->
-                                    <!-- ================================================= -->
-                                    <Button Grid.Column="3" Width="38" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Remove application" Click="Remove_Application_btn">
+                                    <Button Grid.Column="4" Width="38" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Remove application" Click="Remove_Application_btn">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border x:Name="DeleteBorder" Width="38" Height="38" CornerRadius="10" Background="Transparent">
@@ -695,26 +762,27 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+
                     <Grid Grid.Row="1">
 
                         <!-- AVVISO -->
                         <TextBlock x:Name="Warning_lbl"
-               Text="⚠  Unsaved changes"
-               Foreground="#FF526D"
-               FontSize="16"
-               FontWeight="SemiBold"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Left"
-               Visibility="Collapsed"/>
+                                   Text="⚠  Unsaved changes"
+                                   Foreground="#FF526D"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Visibility="Collapsed"/>
 
                         <!-- SAVE BUTTON -->
                         <Button x:Name="Save_Btn"
-            Width="145"
-            Height="46"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Content="✓ SAVE"
-            Style="{StaticResource PrimaryButton}"/>
+                                Width="145"
+                                Height="46"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Content="✓ SAVE"
+                                Style="{StaticResource PrimaryButton}"/>
                     </Grid>
                 </Grid>
 
